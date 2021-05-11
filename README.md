@@ -5,10 +5,9 @@ properties in smart contracts" at the chair of programming languages, Albert
 Ludwig University of Freiburg.
 
 ## Motivation - the short version
-This project provides a small language and a the basis of a compiler pipeline to allow you to
-write assertions for your (Michelson) smart contracts that are checked in a
-distributed fashion by the validators of the (Tezos) network. The code covers most of the off-chain
-part of the project - the theory and design of the on-chain part is briefly discussed in the thesis.
+Modern blockchains provide a platform for building sophisticated applications with smart contracts. Because transactions are processed at every node in the network, the quantity and complexity of computations, which can be performed by smart contracts, are limited. Furthermore, complex contracts can generate high transaction costs for the user. To overcome this limitation and improve cost efficiency, blockchain-based applications could move computations to an off-chain component and only process the result on the blockchain. This thesis proposes a processing model, which engages the validators of the network in a distributed effort to verify a submitted off-chain computation. Based on a specification of properties, the validators are challenged to find a counterexample by asserting these properties for independent subsets of the result. This reduces the computational effort on the blockchain to the verification of the result, rather than the computation of the result itself. Moreover, by implementing a distributed scheme, each node  only has to process a fraction of the verification. As a further contribution, this thesis defines a domain-specific language to express explicit assertions for off-chain computations and specifies a processing pipeline to transform and compile these assertions into smart contracts. These contracts conduct a point-wise search for a counterexample and are called during the verification process.
+
+This respository provides a small domain-specific language and the partial implementation of a compiler pipeline, which allows to specify assertions for  the Tezos blockchain and thus (Michelson) smart contracts. The code contains the front-end of the pipeline (parser and transformer) and parts of the Tezos backend (semantic and type check or linker).
 
 ## Getting started
 The frontend as well as the Tezos backend of the pipeline is written in OCaml and uses the `Dune` build system. You'll need OCamls package manager `opam` installed.
