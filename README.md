@@ -1,4 +1,4 @@
-# Checking assertions for smart contracts
+# Distributed assertion checking for smart contracts on Tezos
 This project contains the material and code developed during the course of my master's thesis
 with the working title "Assertions for distributed refutation (or validation) of
 properties in smart contracts" at the chair of programming languages, Albert
