@@ -1,0 +1,24 @@
+(copy_files ../../../../../src/offline/tezos/typecheck/union_path.ml*)
+(copy_files ../../../../../src/offline/tezos/typecheck/micheline_annotations.ml*)
+
+(tests
+ (names test_typecheck_types
+        test_mismatch_contract
+        test_union_path
+        test_micheline_annotations)
+ (libraries core
+	    alcotest-lwt
+	    lwt
+	    lwt.unix
+            parsing
+	    transformation
+	    tezos_backend
+	    dao_type
+	    tezos-micheline)
+ (flags (:standard -open Tezos_micheline
+                   -linkall))
+ (preprocess
+  (pps ppx_jane))
+ (lint
+  (pps ppx_jane ppx_js_style -check-doc-comments -annotated-ignores -styler
+    -pretty -dated-deprecation)))

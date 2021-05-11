@@ -1,0 +1,30 @@
+
+(executable
+  (name main)
+  (modules main generate_assertion_contract)
+  (preprocess (pps ppx_let))
+  (libraries lwt
+             cli_args
+             parsing
+             transformation
+             dao_type
+             tezos_backend)
+  (flags (:standard -open Lwt
+                    -linkall)))
+
+(executable
+	(name assert_to_json)
+	(modules assert_to_json)
+	(preprocess (pps ppx_let))
+	(libraries parsing))
+
+(library
+ (name check_and_compile)
+ (modules check_and_compile)
+ (libraries cli_args
+            parsing
+            dao_type
+	    lwt)
+ (virtual_modules check_and_compile)
+ (flags (:standard -open Lwt
+                   -linkall)))

@@ -1,0 +1,25 @@
+(library
+  (name type_checker)
+  (libraries core
+             dao_script
+             dao_type
+             transformation
+	     tezos_ast
+	     tezos-rpc-http-client-unix
+             tezos-shell-services
+             tezos-client-base
+	     tezos-client-base-unix
+	     tezos-micheline
+	     tezos-client-007-PsDELPH1
+
+             (select void_for_linking-007-PsDELPH1 from
+               (tezos-client-007-PsDELPH1-commands.registration -> void_for_linking-007-PsDELPH1.empty)
+               (-> void_for_linking-007-PsDELPH1.empty)))
+  (flags (:standard -open Lwt
+                    -open Tezos_micheline
+		    -open Tezos_shell_services
+		    -open Tezos_rpc_http_client_unix
+		    -open Tezos_stdlib_unix
+                    -open Tezos_client_base
+                    -open Tezos_client_base_unix
+                    -linkall)))
